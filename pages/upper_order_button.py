@@ -1,27 +1,20 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
+import allure
+from selenium.webdriver.common.by import By
 from ..locators.upper_order_button_locators import UpperBasePageLocators
+from .base_page import BasePage
 
-class UpperOrderButtonPage:
-    def __init__(self, driver):
-        self.driver = driver
+class UpperOrderButtonPage(BasePage):
 
+    @allure.step('Кликаем по кнопке "Заказать"')
     def click_upper_order_button(self):
-        WebDriverWait(self.driver, 15).until(
-            ec.element_to_be_clickable(UpperBasePageLocators.UPPER_ORDER_BUTTON)
-        ).click()
+        self.click(UpperBasePageLocators.UPPER_ORDER_BUTTON)
+        self.is_element_displayed(UpperBasePageLocators.BIKE_FOR_WHOM)
+        assert "/order" in self.driver.current_url, "URL не содержит /order"
 
-        WebDriverWait(self.driver, 15).until(
-            ec.presence_of_element_located(UpperBasePageLocators.BIKE_FOR_WHOM)
-        )
-
-        WebDriverWait(self.driver, 15).until(ec.url_contains("/order"))
-
+    @allure.step('Проверяем, что страница заказа открыта')
     def is_order_page_opened(self):
         try:
-            WebDriverWait(self.driver, 15).until(
-                ec.presence_of_element_located(UpperBasePageLocators.BIKE_FOR_WHOM)
-            )
-            return self.driver.current_url == "https://qa-scooter.praktikum-services.ru/order"
-        except:
+            element_displayed = self.is_element_displayed(UpperBasePageLocators.BIKE_FOR_WHOM)
+            return element_displayed and self.driver.current_url == "https://qa-scooter.praktikum-services.ru/order"
+        except Exception:
             return False

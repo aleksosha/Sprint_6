@@ -1,16 +1,13 @@
+import time
+
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+from ..locators.confirm_order_locators import ConfirmOrderLocators
 from ..pages.first_order_page import FirstOrderPage
 from ..pages.second_order_page_one_day_black_pearl import SecondOrderPage
 from ..pages.confirm_order_page import ConfirmOrderPage
 import pytest
 from selenium import webdriver
-
-
-@pytest.fixture(scope="class")
-def driver():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    yield driver
-    driver.quit()
 
 
 class TestOrderPage:
@@ -33,4 +30,4 @@ class TestOrderPage:
         second_order_page.set_comment_for_courier("Позвоните за 10 минут до доставки")
 
         second_order_page.click_order_button()
-
+        assert second_order_page.is_element_displayed(ConfirmOrderLocators.MODAL_WINDOW)

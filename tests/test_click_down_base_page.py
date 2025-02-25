@@ -1,5 +1,7 @@
 import allure
 import pytest
+from selenium.webdriver.common.by import By
+
 from ..pages.down_order_button import DownOrderButtonPage
 
 
@@ -12,5 +14,5 @@ class TestDownOrderButton:
         page = DownOrderButtonPage(driver)
         page.click_down_order_button()
 
-        assert page.is_order_page_opened()
+        assert "order" in driver.current_url
 

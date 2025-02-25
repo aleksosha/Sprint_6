@@ -1,37 +1,35 @@
 import allure
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
+from .base_page import BasePage
 from ..locators.second_order_page_locators import SecondOrderPageLocators
 
-class SecondOrderPage:
-    def __init__(self, driver):
-        self.driver = driver
+class SecondOrderPage(BasePage):
 
     @allure.step("Открыть календарь")
     def click_calendar(self):
-        self.driver.find_element(*SecondOrderPageLocators.CALENDAR_BUTTON).click()
+        self.click(SecondOrderPageLocators.CALENDAR_BUTTON)
 
     @allure.step("Выбрать дату")
     def set_date(self):
-        WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(SecondOrderPageLocators.RENTAL_DATE)
-        ).click()
+        self.click(SecondOrderPageLocators.RENTAL_DATE)
 
     @allure.step("Выбрать срок аренды")
     def set_rental_period(self):
-        self.driver.find_element(*SecondOrderPageLocators.RENTAL_PERIOD_DROPDOWN).click()
-        WebDriverWait(self.driver, 5).until(
-            ec.visibility_of_element_located(SecondOrderPageLocators.RENTAL_PERIOD_SEVEN_DAYS_OPTION)
-        ).click()
+        self.click(SecondOrderPageLocators.RENTAL_PERIOD_DROPDOWN)
+        self.click(SecondOrderPageLocators.RENTAL_PERIOD_SEVEN_DAYS_OPTION)
 
     @allure.step("Выбрать цвет самоката 'Серая безысходность'")
     def set_gray_colour(self):
-        self.driver.find_element(*SecondOrderPageLocators.GRAY_HOPELESSNESS).click()
+        self.click(SecondOrderPageLocators.GRAY_HOPELESSNESS)
 
     @allure.step("Добавить комментарий для курьера")
     def set_comment_for_courier(self, comment):
-        self.driver.find_element(*SecondOrderPageLocators.COMMENT_FOR_COURIER).send_keys(comment)
+        self.send_keys(SecondOrderPageLocators.COMMENT_FOR_COURIER, comment)
 
     @allure.step("Нажать кнопку 'Заказать'")
     def click_order_button(self):
-        self.driver.find_element(*SecondOrderPageLocators.ORDER_BUTTON).click()
+        self.click(SecondOrderPageLocators.ORDER_BUTTON)
+
+    @allure.step("Проверить, что заказ подтвержден")
+    def is_order_confirmed(self):
+        self.wait_for_element(SecondOrderPageLocators.CONFIRMATION_MODAL, timeout=10)
+        return self.is_element_displayed(SecondOrderPageLocators.CONFIRMATION_MODAL)

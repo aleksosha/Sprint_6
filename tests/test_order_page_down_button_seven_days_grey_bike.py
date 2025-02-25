@@ -1,3 +1,4 @@
+from ..locators.confirm_order_locators import ConfirmOrderLocators
 from ..pages.first_order_page import FirstOrderPage
 from ..pages.second_order_page_seven_days_grey_pearl import SecondOrderPage
 from ..pages.confirm_order_page import ConfirmOrderPage
@@ -32,5 +33,6 @@ class TestOrderPage:
         second_order_page.set_gray_colour()
         second_order_page.set_comment_for_courier("Позвоните за 10 минут до доставки")
 
+        # Кликаем по кнопке "Заказать"
         second_order_page.click_order_button()
-
+        assert second_order_page.is_element_displayed(ConfirmOrderLocators.MODAL_WINDOW)

@@ -2,7 +2,7 @@ import pytest
 import allure
 from ..pages.faq_page import FAQPage
 from ..locators.faq_locators import FAQPageLocators
-
+from ..tests.conftest import driver
 
 @allure.epic("Тесты FAQ")
 @pytest.mark.usefixtures("driver")

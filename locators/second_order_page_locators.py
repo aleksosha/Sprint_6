@@ -9,5 +9,6 @@ class SecondOrderPageLocators:
     BLACK_PEARL = (By.XPATH, '//label[text()="чёрный жемчуг"]')
     GRAY_HOPELESSNESS = (By.XPATH, '//label[text()="серая безысходность"]')
     COMMENT_FOR_COURIER = (By.XPATH, '//input[@placeholder="Комментарий для курьера"]')
-    ORDER_BUTTON = (By.XPATH, '//button[text()="Заказать"]')
+    ORDER_BUTTON = (By.XPATH, '//div[@class="Order_Buttons__1xGrp"]//button[contains(@class, "Button_Button__ra12g") and not(contains(text(), "Назад"))]')
     BACK_BUTTON = (By.XPATH, '//button[text()="Назад"]')
+    CONFIRMATION_MODAL = (By.XPATH, "//div[contains(text(), 'Заказ оформлен')]")
