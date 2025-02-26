@@ -16,9 +16,7 @@ class DownOrderButtonPage(BasePage):
 
     @allure.step('Проверяем, что страница заказа открыта')
     def is_order_page_opened(self):
-        element_displayed = self.is_element_displayed(
-            (By.XPATH, '//div[contains(text(), "Для кого самокат")]')
-        )
+        element_displayed = self.is_element_displayed(DownBasePageLocators.ORDER_PAGE_HEADER)
         return element_displayed and self.driver.current_url.startswith(
             'https://qa-scooter.praktikum-services.ru/orders'
         )

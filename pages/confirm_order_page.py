@@ -1,8 +1,8 @@
 import allure
 from ..locators.confirm_order_locators import ConfirmOrderLocators
-from .base_page import BasePage  # Импортируем BasePage
+from .base_page import BasePage
 
-class ConfirmOrderPage(BasePage):  # Наследуемся от BasePage
+class ConfirmOrderPage(BasePage):
     @allure.step("Ожидание появления окна подтверждения")
     def wait_for_modal(self):
         self.wait_for_element(ConfirmOrderLocators.MODAL_WINDOW)

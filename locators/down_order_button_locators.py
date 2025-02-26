@@ -7,3 +7,4 @@ class DownBasePageLocators:
     STATUS_ELEMENT = (By.XPATH, "//div[contains(text(), 'Когда аренда заканчивается')]")
 
     BIKE_FOR_WHOM = (By.XPATH, '//div[@class="Order_Header__BZXOb"]')
+    ORDER_PAGE_HEADER = (By.XPATH, '//div[contains(text(), "Для кого самокат")]')

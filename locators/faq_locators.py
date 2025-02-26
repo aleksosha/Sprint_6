@@ -9,3 +9,4 @@ class FAQPageLocators:
 
     # Теперь QUESTIONS импортируются из faq_data
     QUESTIONS = QUESTIONS
+

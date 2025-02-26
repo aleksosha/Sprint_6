@@ -1,4 +1,3 @@
-# tests/test_yandex_button.py
 from ..pages.yandex_button import YandexButton
 
 class TestUpperOrderButton:

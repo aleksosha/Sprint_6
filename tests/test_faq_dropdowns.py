@@ -17,5 +17,4 @@ class TestFAQDropdowns:
         faq_page.scroll_to_faq_section()
         faq_page.click_question(question)
 
-        print(f"Проверяем ответ для вопроса: {question}")
         assert faq_page.is_answer_visible(question, expected_answer)

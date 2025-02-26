@@ -1,23 +1,11 @@
-from ..locators.confirm_order_locators import ConfirmOrderLocators
 from ..pages.first_order_page import FirstOrderPage
 from ..pages.second_order_page_seven_days_grey_pearl import SecondOrderPage
-from ..pages.confirm_order_page import ConfirmOrderPage
-import pytest
-from selenium import webdriver
-
-
-@pytest.fixture(scope="class")
-def driver():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    yield driver
-    driver.quit()
-
 
 class TestOrderPage:
     def test_fill_in_info(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/order')
 
+        # Создаем объект страницы первого заказа
         first_order_page = FirstOrderPage(driver)
         first_order_page.set_name('Александра')
         first_order_page.set_last_name('Дроботун')
@@ -26,6 +14,7 @@ class TestOrderPage:
         first_order_page.set_phone_number('+79169735250')
         first_order_page.click_next_button()
 
+        # Создаем объект страницы второго заказа
         second_order_page = SecondOrderPage(driver)
         second_order_page.click_calendar()
         second_order_page.set_date()
@@ -35,4 +24,6 @@ class TestOrderPage:
 
         # Кликаем по кнопке "Заказать"
         second_order_page.click_order_button()
-        assert second_order_page.is_element_displayed(ConfirmOrderLocators.MODAL_WINDOW)
+
+        # Проверяем, что модальное окно подтверждения заказа отображается
+        assert second_order_page.is_order_confirmed()

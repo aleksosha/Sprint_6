@@ -28,3 +28,8 @@ class SecondOrderPage(BasePage):
     @allure.step("Нажать кнопку 'Заказать'")
     def click_order_button(self):
         self.click(SecondOrderPageLocators.ORDER_BUTTON)
+
+    @allure.step("Проверить, что заказ подтвержден")
+    def is_order_confirmed(self):
+        self.wait_for_element(SecondOrderPageLocators.CONFIRMATION_MODAL, timeout=10)
+        return self.is_element_displayed(SecondOrderPageLocators.CONFIRMATION_MODAL)
