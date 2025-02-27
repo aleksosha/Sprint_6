@@ -2,7 +2,7 @@ import allure
 from .base_page import BasePage
 from ..locators.second_order_page_locators import SecondOrderPageLocators
 
-class SecondOrderPage(BasePage):
+class SecondOrderPageBlackPearl(BasePage):
 
     @allure.step("Открыть календарь")
     def click_calendar(self):

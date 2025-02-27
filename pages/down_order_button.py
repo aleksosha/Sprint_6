@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.common.by import By
 from ..locators.down_order_button_locators import DownBasePageLocators
 from .base_page import BasePage
 
@@ -17,6 +16,7 @@ class DownOrderButtonPage(BasePage):
     @allure.step('Проверяем, что страница заказа открыта')
     def is_order_page_opened(self):
         element_displayed = self.is_element_displayed(DownBasePageLocators.ORDER_PAGE_HEADER)
-        return element_displayed and self.driver.current_url.startswith(
+        return element_displayed and self.get_current_url().startswith(
             'https://qa-scooter.praktikum-services.ru/orders'
         )
+

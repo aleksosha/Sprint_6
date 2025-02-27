@@ -1,6 +1,8 @@
+import allure
 from ..pages.yandex_button import YandexButton
 
 class TestUpperOrderButton:
+    @allure.title("Тест: Автоматический редирект на Дзен.ру по клику на Яндекс")
     def test_open_order_page_from_upper_button(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
         page = YandexButton(driver)

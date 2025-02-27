@@ -2,7 +2,7 @@ import allure
 from .base_page import BasePage
 from ..locators.second_order_page_locators import SecondOrderPageLocators
 
-class SecondOrderPageGreyPearl(BasePage):
+class SecondOrderPage(BasePage):
 
     @allure.step("Открыть календарь")
     def click_calendar(self):
@@ -20,6 +20,10 @@ class SecondOrderPageGreyPearl(BasePage):
     @allure.step("Выбрать цвет самоката 'Серая безысходность'")
     def set_gray_colour(self):
         self.click(SecondOrderPageLocators.GRAY_HOPELESSNESS)
+
+    @allure.step("Выбрать цвет самоката 'Серая безысходность'")
+    def set_black_colour(self):
+        self.click(SecondOrderPageLocators.BLACK_PEARL)
 
     @allure.step("Добавить комментарий для курьера")
     def set_comment_for_courier(self, comment):

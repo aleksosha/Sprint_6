@@ -1,11 +1,12 @@
+import allure
 from ..pages.first_order_page import FirstOrderPage
-from ..pages.second_order_page_seven_days_grey_pearl import SecondOrderPage
+from ..pages.second_order_page import SecondOrderPage
 
 class TestOrderPage:
+    @allure.title("Тест: Заполняем информацию для оформления заказа серого самоката на 7 дней")
     def test_fill_in_info(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/order')
 
-        # Создаем объект страницы первого заказа
         first_order_page = FirstOrderPage(driver)
         first_order_page.set_name('Александра')
         first_order_page.set_last_name('Дроботун')

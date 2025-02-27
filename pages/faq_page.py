@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from ..locators.faq_locators import FAQPageLocators
 from ..pages.base_page import BasePage
 
-
 class FAQPage(BasePage):
     @allure.step("Скроллим до секции 'Вопросы о важном'")
     def scroll_to_faq_section(self):

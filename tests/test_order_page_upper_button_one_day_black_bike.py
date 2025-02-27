@@ -1,7 +1,9 @@
+import allure
 from ..pages.first_order_page import FirstOrderPage
-from ..pages.second_order_page_one_day_black_pearl import SecondOrderPage
+from ..pages.second_order_page import SecondOrderPage
 
 class TestOrderPage:
+    @allure.title("Тест: Заполняем информацию для оформления заказа серого самоката на 7 дней")
     def test_fill_in_info(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/order')
 
@@ -16,7 +18,7 @@ class TestOrderPage:
         second_order_page = SecondOrderPage(driver)
         second_order_page.click_calendar()
         second_order_page.set_date()
-        second_order_page.set_rental_period_one_day()
+        second_order_page.set_rental_period()
         second_order_page.set_black_colour()
         second_order_page.set_comment_for_courier("Позвоните за 10 минут до доставки")
 
