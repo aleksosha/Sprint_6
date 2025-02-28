@@ -17,13 +17,9 @@ class SecondOrderPage(BasePage):
         self.click(SecondOrderPageLocators.RENTAL_PERIOD_DROPDOWN)
         self.click(SecondOrderPageLocators.RENTAL_PERIOD_SEVEN_DAYS_OPTION)
 
-    @allure.step("Выбрать цвет самоката 'Серая безысходность'")
-    def set_gray_colour(self):
-        self.click(SecondOrderPageLocators.GRAY_HOPELESSNESS)
-
-    @allure.step("Выбрать цвет самоката 'Серая безысходность'")
-    def set_black_colour(self):
-        self.click(SecondOrderPageLocators.BLACK_PEARL)
+    @allure.step("Выбрать цвет самоката")
+    def set_color(self, color):
+        self.click(color)
 
     @allure.step("Добавить комментарий для курьера")
     def set_comment_for_courier(self, comment):

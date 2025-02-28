@@ -20,3 +20,5 @@ class DownOrderButtonPage(BasePage):
             'https://qa-scooter.praktikum-services.ru/orders'
         )
 
+    def open_main_page(self):
+        self.get_url()

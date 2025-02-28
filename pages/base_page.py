@@ -61,3 +61,6 @@ class BasePage:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def get_url(self):
+        self.driver.get('https://qa-scooter.praktikum-services.ru/')

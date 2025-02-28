@@ -7,6 +7,4 @@ class FAQPageLocators:
     QUESTION_TEMPLATE = "//div[contains(@id, 'accordion__heading') and contains(text(), '{}')]"
     ANSWER_TEMPLATE = "//div[contains(@id, 'accordion__panel') and not(@hidden)]//p"
 
-    # Теперь QUESTIONS импортируются из faq_data
     QUESTIONS = QUESTIONS
-
